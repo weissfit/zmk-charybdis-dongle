@@ -55,7 +55,7 @@
         com-invdir;
         inversion-on;
         prechargep = <0x22>;
-	idle-timeout = <300>;   /* 5 minutes */
     };
 };
+
 
