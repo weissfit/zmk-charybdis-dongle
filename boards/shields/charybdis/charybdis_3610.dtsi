@@ -39,7 +39,6 @@
     cs-gpios = <&gpio0 20 GPIO_ACTIVE_LOW>;
 
 trackball: trackball@0 {
-trackball: trackball@0 {
     status = "okay";
     compatible = "pixart,pmw3610";
     reg = <0>;
@@ -51,5 +50,6 @@ trackball: trackball@0 {
     zephyr,axis-y = <INPUT_REL_Y 0 255 0>;
 };
 };
+
 
 
