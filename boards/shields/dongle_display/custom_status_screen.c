@@ -11,7 +11,6 @@
 #include "widgets/layer_status.h"
 #include "widgets/output_status.h"
 #include "widgets/hid_indicators.h"
-#include "widgets/wpm_status.h"
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
@@ -35,8 +34,6 @@ static struct zmk_widget_hid_indicators hid_indicators_widget;
 static struct zmk_widget_bongo_cat bongo_cat_widget;
 #endif
 
-static struct zmk_widget_wpm_status wpm_status_widget;
-
 lv_style_t global_style;
 
 lv_obj_t *zmk_display_status_screen() {
@@ -52,12 +49,7 @@ lv_obj_t *zmk_display_status_screen() {
     
     zmk_widget_output_status_init(&output_status_widget, screen);
     lv_obj_align(zmk_widget_output_status_obj(&output_status_widget), LV_ALIGN_TOP_LEFT, 0, 0);
-
-#if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_WPM)
-    zmk_widget_wpm_status_init(&wpm_status_widget, screen);
-    lv_obj_align_to(zmk_widget_wpm_status_obj(&wpm_status_widget), zmk_widget_output_status_obj(&output_status_widget), LV_ALIGN_OUT_RIGHT_MID, 7, 0);
-#endif
-
+    
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_BONGO_CAT)
     zmk_widget_bongo_cat_init(&bongo_cat_widget, screen);
     lv_obj_align(zmk_widget_bongo_cat_obj(&bongo_cat_widget), LV_ALIGN_BOTTOM_RIGHT, 0, -7);
@@ -75,7 +67,7 @@ lv_obj_t *zmk_display_status_screen() {
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_LAYER)
     zmk_widget_layer_status_init(&layer_status_widget, screen);
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_BONGO_CAT)
-    lv_obj_align_to(zmk_widget_layer_status_obj(&layer_status_widget), zmk_widget_bongo_cat_obj(&bongo_cat_widget), LV_ALIGN_BOTTOM_RIGHT, 0, 5);
+    lv_obj_align_to(zmk_widget_layer_status_obj(&layer_status_widget), zmk_widget_bongo_cat_obj(&bongo_cat_widget), LV_ALIGN_BOTTOM_LEFT, 0, 5);
 #else
     lv_obj_align(zmk_widget_layer_status_obj(&layer_status_widget), LV_ALIGN_BOTTOM_RIGHT, 0, -3);
 #endif
