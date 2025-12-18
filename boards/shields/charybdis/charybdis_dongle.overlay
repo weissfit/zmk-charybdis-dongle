@@ -3,6 +3,7 @@
 / {
     chosen {
         zmk,kscan = &mock_kscan;
+        zephyr,display = &oled;
     };
 
     mock_kscan: kscan_1 {
@@ -41,6 +42,7 @@
     pinctrl-1 = <&i2c0_sleep>;
 
     oled: sh1106@3c {
+        status = "okay";
         compatible = "sinowealth,sh1106";
         reg = <0x3c>;
         width = <129>;
@@ -55,4 +57,5 @@
         prechargep = <0x22>;
     };
 };
+
 
