@@ -22,31 +22,28 @@ config ZMK_DONGLE_DISPLAY_DONGLE_BATTERY
     bool "Show also the battery level of the dongle"
     depends on BT && (!ZMK_SPLIT_BLE || ZMK_SPLIT_ROLE_CENTRAL)
 
-config ZMK_DONGLE_DISPLAY_NAME
-    string "display device name on screen"
-
 config ZMK_DONGLE_DISPLAY_MAC_MODIFIERS
     bool "Use MacOS modifier symbols instead of the Windows symbols"
 
-<<<<<<< Updated upstream
-config ZMK_DONGLE_DISPLAY_PADDING_LEFT
-    int "Left padding for widgets in pixels"
-    default 0
-    range 0 20
-
-config ZMK_DONGLE_DISPLAY_PADDING_RIGHT
-    int "Right padding for widgets in pixels"
-    default 0
-    range 0 20
-=======
 config ZMK_DONGLE_DISPLAY_BONGO_CAT
-    bool "Show bongo cat widget"
+    bool "Display the Bongo Cat widget"
     default y
 
 config ZMK_DONGLE_DISPLAY_MODIFIERS
-    bool "Show modifiers widget"
+    bool "Display the modifiers widget"
     default y
->>>>>>> Stashed changes
+
+config ZMK_DONGLE_DISPLAY_LAYER
+    bool "Display the highest layer widget"
+    default y
+
+config ZMK_DONGLE_DISPLAY_WPM
+    bool "Display the WPM widget"
+    default n
+
+config ZMK_DONGLE_DISPLAY_WPM_DISABLED_LAYERS
+    string "Layers in which the widget is disabled, comma separated"
+    default ""
 
 choice ZMK_DISPLAY_WORK_QUEUE
     default ZMK_DISPLAY_WORK_QUEUE_DEDICATED
