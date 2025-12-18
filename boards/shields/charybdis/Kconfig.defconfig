@@ -1,53 +1,16 @@
-# --- Charybdis Right Shield Config ---
+if SHIELD_CHARYBDIS_DONGLE
 
-# Define PMW3610 symbols so Kconfig builds
-config PMW3610
-    bool "Enable PMW3610 sensor"
-    default y
-
-config PMW3610_SWAP_XY
-    bool "Swap X/Y"
-    default y
-
-config PMW3610_INVERT_X
-    bool "Invert X"
-    default y
-
-config PMW3610_INVERT_Y
-    bool "Invert Y"
-    default y
-
-config PMW3610_REST1_SAMPLE_TIME_MS
-    int "Rest1 sample time"
-    default 20
-
-config PMW3610_REST2_SAMPLE_TIME_MS
-    int "Rest2 sample time"
-    default 200
-
-config PMW3610_REST3_SAMPLE_TIME_MS
-    int "Rest3 sample time"
-    default 300
-
-config PMW3610_RUN_DOWNSHIFT_TIME_MS
-    int "Run downshift time"
-    default 500
-
-config PMW3610_REST1_DOWNSHIFT_TIME_MS
-    int "Rest1 downshift time"
-    default 3000
-
-config PMW3610_REST2_DOWNSHIFT_TIME_MS
-    int "Rest2 downshift time"
-    default 30000
-
-config PMW3610_SMART_ALGORITHM
-    bool "Enable smart algorithm"
-    default y
-
-# Enable split configuration
-config ZMK_SPLIT
-    default y
+config ZMK_KEYBOARD_NAME
+	default "Charybdis"
 
 config ZMK_SPLIT_ROLE_CENTRAL
-    default y
+	default y
+
+endif
+
+if SHIELD_CHARYBDIS_DONGLE || SHIELD_CHARYBDIS_LEFT || SHIELD_CHARYBDIS_RIGHT
+
+config ZMK_SPLIT
+	default y
+	
+endif
