@@ -15,9 +15,8 @@
 #endif
 
 const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_CONTROL uint8_t control_map[] = {
-
-  0x00, 0x00, 0x00, 0xff, 	/*Color of index 1*/
   0xff, 0xff, 0xff, 0xff, 	/*Color of index 0*/
+  0x00, 0x00, 0x00, 0xff, 	/*Color of index 1*/
 
   0x00, 0x00, 
   0x00, 0x00, 
@@ -50,9 +49,8 @@ const lv_img_dsc_t control_icon = {
 #endif
 
 const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_SHIFT uint8_t shift_map[] = {
-
-  0x00, 0x00, 0x00, 0xff, 	/*Color of index 1*/
   0xff, 0xff, 0xff, 0xff, 	/*Color of index 0*/
+  0x00, 0x00, 0x00, 0xff, 	/*Color of index 1*/
 
   0x00, 0x00, 
   0x00, 0x00, 
@@ -85,9 +83,8 @@ const lv_img_dsc_t shift_icon = {
 #endif
 
 const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_ALT uint8_t alt_map[] = {
- 
+  0xff, 0xff, 0xff, 0xff, 	/*Color of index 0*/
   0x00, 0x00, 0x00, 0xff, 	/*Color of index 1*/
- 0xff, 0xff, 0xff, 0xff, 	/*Color of index 0*/
 
   0x00, 0x00, 
   0x00, 0x00, 
@@ -120,9 +117,8 @@ const lv_img_dsc_t alt_icon = {
 #endif
 
 const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_WIN uint8_t win_map[] = {
-  
+  0xff, 0xff, 0xff, 0xff, 	/*Color of index 0*/
   0x00, 0x00, 0x00, 0xff, 	/*Color of index 1*/
-0xff, 0xff, 0xff, 0xff, 	/*Color of index 0*/
 
   0x00, 0x00, 
   0x00, 0x00, 
@@ -155,9 +151,8 @@ const lv_img_dsc_t win_icon = {
 #endif
 
 const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_CMD uint8_t cmd_map[] = {
-
-  0x00, 0x00, 0x00, 0xff, 	/*Color of index 1*/
   0xff, 0xff, 0xff, 0xff, 	/*Color of index 0*/
+  0x00, 0x00, 0x00, 0xff, 	/*Color of index 1*/
 
   0x00, 0x00,
   0x00, 0x00,
@@ -190,9 +185,8 @@ const lv_img_dsc_t cmd_icon = {
 #endif
 
 const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_OPT uint8_t opt_map[] = {
-
-  0x00, 0x00, 0x00, 0xff, 	/*Color of index 1*/
   0xff, 0xff, 0xff, 0xff, 	/*Color of index 0*/
+  0x00, 0x00, 0x00, 0xff, 	/*Color of index 1*/
 
   0x00, 0x00,
   0x00, 0x00,
