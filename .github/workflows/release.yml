@@ -1,9 +1,10 @@
 name: Release Firmware
 
 on:
-  push:
-    tags:
-      - "*"
+  workflow_run:
+    workflows: ["Build ZMK firmware"]
+    types:
+      - completed
 
 permissions:
   contents: write
