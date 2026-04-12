@@ -1,10 +1,9 @@
 name: Release Firmware
 
 on:
-  workflow_run:
-    workflows: ["Build ZMK firmware"]
-    types:
-      - completed
+  push:
+    tags:
+      - "*"
 
 permissions:
   contents: write
@@ -12,15 +11,13 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'master' }}
+    if: github.event.base_ref == 'refs/heads/master'
 
     steps:
       - name: Download artifacts from build workflow
         uses: dawidd6/action-download-artifact@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          run_id: ${{ github.event.workflow_run.id }}
           workflow: build.yml
           path: firmware
 
@@ -29,15 +26,13 @@ jobs:
 
       - name: Create firmware zip
         run: |
-          ZIP_NAME="zmk-${{ github.run_number }}.zip"
           cd firmware
-          zip -r "../$ZIP_NAME" .
+          zip -r "../${{ github.event.repository.name }}-${{ github.ref_name }}.zip" .
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: zmk-${{ github.run_number }}
-          name: ZMK Firmware Build ${{ github.run_number }}
-          files: zmk-${{ github.run_number }}.zip
+          name: ${{ github.ref_name }}
+          files: ${{ github.event.repository.name }}-${{ github.ref_name }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
