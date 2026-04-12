@@ -9,7 +9,6 @@ permissions:
   contents: write
 
 jobs:
-<<<<<<< HEAD
   release:
     runs-on: ubuntu-latest
     if: github.event.base_ref == 'refs/heads/master'
@@ -37,8 +36,3 @@ jobs:
           files: ${{ github.event.repository.name }}-${{ github.ref_name }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-=======
-  build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
-  
->>>>>>> ac60567
