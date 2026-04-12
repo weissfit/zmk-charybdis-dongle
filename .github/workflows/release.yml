@@ -12,28 +12,42 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: github.event.base_ref == 'refs/heads/master'
+    if: github.event.workflow_run.conclusion == 'success'
 
     steps:
+      - name: Get tag for commit
+        id: get_tag
+        run: |
+          TAG=$(gh api "repos/${{ github.repository }}/git/ref/tags/${{ github.event.workflow_run.head_branch }}" --jq '.ref | ltrimstr("refs/tags/")' 2>/dev/null || echo "")
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Download artifacts from build workflow
+        if: steps.get_tag.outputs.tag != ''
         uses: dawidd6/action-download-artifact@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          run_id: ${{ github.event.workflow_run.id }}
           workflow: build.yml
           path: firmware
 
       - name: List files (debug)
+        if: steps.get_tag.outputs.tag != ''
         run: ls -R firmware
 
       - name: Create firmware zip
+        if: steps.get_tag.outputs.tag != ''
         run: |
           cd firmware
-          zip -r "../${{ github.event.repository.name }}-${{ github.ref_name }}.zip" .
+          zip -r "../${{ github.event.repository.name }}-${{ steps.get_tag.outputs.tag }}.zip" .
 
       - name: Create GitHub Release
+        if: steps.get_tag.outputs.tag != ''
         uses: softprops/action-gh-release@v2
         with:
-          name: ${{ github.ref_name }}
-          files: ${{ github.event.repository.name }}-${{ github.ref_name }}.zip
+          tag_name: ${{ steps.get_tag.outputs.tag }}
+          name: ${{ steps.get_tag.outputs.tag }}
+          files: ${{ github.event.repository.name }}-${{ steps.get_tag.outputs.tag }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
