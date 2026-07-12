@@ -40,6 +40,7 @@
     compatible = "nordic,nrf-twi";
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
+    pinctrl-names = "default", "sleep";
 
     oled: sh1106@3c {
         status = "okay";
@@ -56,5 +57,3 @@
         prechargep = <0x22>;
     };
 };
-
-
