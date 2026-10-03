@@ -42,7 +42,7 @@
 &kp LCTRL       &mo 5                  &mo 4                         &mo 3                     &mo 2                     &none                           &kp PG_DN   &kp LEFT      &kp UP            &kp DOWN          &kp RIGHT          &kp END
 &kp LEFT_SHIFT  &mo 7                  &mkp MCLK                     &mkp RCLK                 &mkp LCLK                 &mkp MB4                        &mkp MB5    &kp DE_MINUS  &kp DE_SEMICOLON  &kp DE_COLON      &kp DE_UNDERSCORE  &kp CAPSLOCK
                                                                      &trans                    &kp SPACE                 &trans                          &kp ENTER   &kp DELETE
-                                                                                               &none                     &none                           &trans
+                                                                                               &trans                    &trans                          &trans
             >;
         };
 
